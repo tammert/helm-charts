@@ -1,0 +1,45 @@
+---
+kind: CronJob
+apiVersion: batch/v1beta1
+metadata:
+  name: {{ include "replicant.name" . }}
+  labels:
+    {{- include "replicant.labels" . | nindent 4 }}
+spec:
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: {{ include "replicant.name" . }}
+              image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
+              {{- if or .Values.environmentVariables .Values.secretEnvironmentVariables }}
+              envFrom:
+                {{- if .Values.environmentVariables }}
+                - configMapRef:
+                    name: {{ include "replicant.name" . }}-env
+                {{- end }}
+                {{- if .Values.secretEnvironmentVariables }}
+                - secretRef:
+                    name: {{ include "replicant.name" . }}-secret-env
+                {{- end }}
+              {{- end }}
+              volumeMounts:
+                - name: config
+                  mountPath: "/config/"
+                {{- if .Values.googleApplicationCredentials }}
+                - name: gcp-sa
+                  mountPath: "/secrets/"
+                {{- end }}
+          volumes:
+            - name: config
+              configMap:
+                name: {{ include "replicant.name" . }}-config
+            {{- if .Values.googleApplicationCredentials}}
+            - name: gcp-sa
+              secret:
+                secretName: {{ include "replicant.name" . }}-gcp-sa
+            {{- end }}
+  schedule: {{ .Values.cronSchedule }}
+  concurrencyPolicy: Forbid

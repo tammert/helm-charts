@@ -1,0 +1,8 @@
+apiVersion: v2
+name: replicant
+description: Official Helm chart for Replicant
+
+type: application
+
+version: 0.1.0
+appVersion: "v0.1.0"

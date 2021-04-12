@@ -1,0 +1,44 @@
+cronSchedule: "0 12 * * *"
+
+image:
+  registry: docker.io
+  repository: tammert/replicant
+  tag:
+
+serviceAccount:
+  create: true
+
+environmentVariables:
+  REPLICANT_CONFIG: "/config/replicant.yaml"
+  REPLICANT_REPLACE_TAG: "false"
+  REPLICANT_ALLOW_PRERELEASE: "false"
+#  GOOGLE_APPLICATION_CREDENTIALS: "/secrets/key.json"
+
+#secretEnvironmentVariables:
+#  AZURE_SP_ID: x
+#  AZURE_SP_PASSWORD: x
+#  AWS_ACCESS_KEY_ID: x
+#  AWS_SECRET_ACCESS_KEY: x
+#  AWS_DEFAULT_REGION: eu-central-1
+
+#googleApplicationCredentials: |
+#  {}
+
+config:
+  images:
+    nginx:
+      upstream: k8s.gcr.io/ingress-nginx/controller
+      downstream: eu.gcr.io/tammert/ingress-nginx/controller
+      mode: higher
+    atlantis:
+      upstream: docker.io/runatlantis/atlantis
+      downstream: eu.gcr.io/tammert/runatlantis/atlantis
+      mode: all
+    external-dns:
+      upstream: k8s.gcr.io/external-dns/external-dns
+      downstream: eu.gcr.io/tammert/external-dns/external-dns
+      mode: highest
+    cert-manager:
+      upstream: quay.io/jetstack/cert-manager-controller
+      downstream: eu.gcr.io/tammert/jetstack/cert-manager-controller
+      mode: semver

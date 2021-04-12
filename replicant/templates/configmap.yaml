@@ -1,0 +1,21 @@
+{{ if .Values.environmentVariables }}
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "replicant.name" . }}-env
+  labels:
+    {{- include "replicant.labels" . | nindent 4 }}
+data:
+  {{- toYaml .Values.environmentVariables | nindent 2 }}
+{{ end }}
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "replicant.name" . }}-config
+  labels:
+    {{- include "replicant.labels" . | nindent 4 }}
+data:
+  replicant.yaml: |
+     {{- toYaml .Values.config | nindent 4 }}
