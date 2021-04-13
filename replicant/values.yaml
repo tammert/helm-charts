@@ -1,4 +1,4 @@
-cronSchedule: "0 12 * * *"
+cronSchedule: "* * * * *"
 
 image:
   registry: docker.io
@@ -12,7 +12,6 @@ environmentVariables:
   REPLICANT_CONFIG: "/config/replicant.yaml"
   REPLICANT_REPLACE_TAG: "false"
   REPLICANT_ALLOW_PRERELEASE: "false"
-#  GOOGLE_APPLICATION_CREDENTIALS: "/secrets/key.json"
 
 #secretEnvironmentVariables:
 #  AZURE_SP_ID: x

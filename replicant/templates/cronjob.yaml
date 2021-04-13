@@ -10,6 +10,7 @@ spec:
     spec:
       template:
         spec:
+          serviceAccountName: {{ include "replicant.serviceAccountName" . }}
           restartPolicy: Never
           containers:
             - name: {{ include "replicant.name" . }}
@@ -41,5 +42,5 @@ spec:
               secret:
                 secretName: {{ include "replicant.name" . }}-gcp-sa
             {{- end }}
-  schedule: {{ .Values.cronSchedule }}
+  schedule: "{{ .Values.cronSchedule }}"
   concurrencyPolicy: Forbid
