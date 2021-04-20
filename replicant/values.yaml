@@ -1,4 +1,4 @@
-cronSchedule: "* * * * *"
+cronSchedule: "0 0 * * *"
 
 image:
   registry: docker.io
@@ -10,8 +10,7 @@ serviceAccount:
 
 environmentVariables:
   REPLICANT_CONFIG: "/config/replicant.yaml"
-  REPLICANT_REPLACE_TAG: "false"
-  REPLICANT_ALLOW_PRERELEASE: "false"
+  REPLICANT_DEBUG: "false"
 
 #secretEnvironmentVariables:
 #  AZURE_SP_ID: x
@@ -20,24 +19,32 @@ environmentVariables:
 #  AWS_SECRET_ACCESS_KEY: x
 #  AWS_DEFAULT_REGION: eu-central-1
 
+# GOOGLE_APPLICATION_CREDENTIALS environment variable is added when googleApplicationCredentials is present.
 #googleApplicationCredentials: |
 #  {}
 
 config:
   images:
     nginx:
-      upstream: k8s.gcr.io/ingress-nginx/controller
-      downstream: eu.gcr.io/tammert/ingress-nginx/controller
+      source: k8s.gcr.io/ingress-nginx/controller
+      destination: eu.gcr.io/tammert/ingress-nginx/controller
       mode: higher
     atlantis:
-      upstream: docker.io/runatlantis/atlantis
-      downstream: eu.gcr.io/tammert/runatlantis/atlantis
+      source: docker.io/runatlantis/atlantis
+      destination: eu.gcr.io/tammert/runatlantis/atlantis
       mode: all
+      allow-prerelease: true
     external-dns:
-      upstream: k8s.gcr.io/external-dns/external-dns
-      downstream: eu.gcr.io/tammert/external-dns/external-dns
+      source: k8s.gcr.io/external-dns/external-dns
+      destination: eu.gcr.io/tammert/external-dns/external-dns
       mode: highest
+      replace-tag: true
     cert-manager:
-      upstream: quay.io/jetstack/cert-manager-controller
-      downstream: eu.gcr.io/tammert/jetstack/cert-manager-controller
+      source: quay.io/jetstack/cert-manager-controller
+      destination: eu.gcr.io/tammert/jetstack/cert-manager-controller
       mode: semver
+    velero:
+      source: velero/velero
+      destination: eu.gcr.io/tammert/velero/velero
+      mode: semver
+      allow-prerelease: true
