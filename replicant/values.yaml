@@ -7,6 +7,8 @@ image:
 
 serviceAccount:
   create: true
+#  annotations:
+#    iam.gke.io/gcp-service-account: replicant@tammert.iam.gserviceaccount.com #GKE Workload Identity
 
 environmentVariables:
   REPLICANT_CONFIG: "/config/replicant.yaml"

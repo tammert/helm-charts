@@ -7,8 +7,8 @@ metadata:
   labels:
     {{- include "replicant.labels" . | nindent 4 }}
 data:
-  {{- if .Values.environmentVariables }}
-  {{- toYaml .Values.environmentVariables | nindent 2 }}
+  {{- with .Values.environmentVariables }}
+  {{- toYaml . | nindent 2 }}
   {{- end }}
   {{- if .Values.googleApplicationCredentials }}
   GOOGLE_APPLICATION_CREDENTIALS: "/secrets/key.json"

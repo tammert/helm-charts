@@ -13,8 +13,8 @@ helm.sh/chart: {{ include "replicant.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- if .Values.additionalLabels }}
-{{ toYaml .Values.additionalLabels }}
+{{- with .Values.additionalLabels }}
+{{ toYaml . }}
 {{- end }}
 {{- end }}
 

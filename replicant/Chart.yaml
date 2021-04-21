@@ -4,5 +4,5 @@ description: Official Helm chart for Replicant
 
 type: application
 
-version: 0.2.4
+version: 0.2.5
 appVersion: "v0.2.2"
