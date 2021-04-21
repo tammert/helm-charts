@@ -7,3 +7,4 @@ release_replicant:
 	cr package replicant/
 	cr upload --config ~/.cr.yaml
 	cr index --config ~/.cr.yaml --push
+	rm .cr-release-packages/*
