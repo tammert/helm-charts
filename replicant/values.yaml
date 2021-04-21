@@ -23,28 +23,28 @@ environmentVariables:
 #googleApplicationCredentials: |
 #  {}
 
-config:
-  images:
-    nginx:
-      source: k8s.gcr.io/ingress-nginx/controller
-      destination: eu.gcr.io/tammert/ingress-nginx/controller
-      mode: higher
-    atlantis:
-      source: docker.io/runatlantis/atlantis
-      destination: eu.gcr.io/tammert/runatlantis/atlantis
-      mode: all
-      allow-prerelease: true
-    external-dns:
-      source: k8s.gcr.io/external-dns/external-dns
-      destination: eu.gcr.io/tammert/external-dns/external-dns
-      mode: highest
-      replace-tag: true
-    cert-manager:
-      source: quay.io/jetstack/cert-manager-controller
-      destination: eu.gcr.io/tammert/jetstack/cert-manager-controller
-      mode: semver
-    velero:
-      source: velero/velero
-      destination: eu.gcr.io/tammert/velero/velero
-      mode: semver
-      allow-prerelease: true
+#config:
+#  images:
+#    nginx:
+#      source: k8s.gcr.io/ingress-nginx/controller
+#      destination: eu.gcr.io/tammert/ingress-nginx/controller
+#      mode: higher
+#    atlantis:
+#      source: docker.io/runatlantis/atlantis
+#      destination: eu.gcr.io/tammert/runatlantis/atlantis
+#      mode: all
+#      allow-prerelease: true
+#    external-dns:
+#      source: k8s.gcr.io/external-dns/external-dns
+#      destination: eu.gcr.io/tammert/external-dns/external-dns
+#      mode: highest
+#      replace-tag: true
+#    cert-manager:
+#      source: quay.io/jetstack/cert-manager-controller
+#      destination: eu.gcr.io/tammert/jetstack/cert-manager-controller
+#      mode: semver
+#    velero:
+#      source: velero/velero
+#      destination: eu.gcr.io/tammert/velero/velero
+#      mode: semver
+#      allow-prerelease: true
