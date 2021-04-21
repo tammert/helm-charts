@@ -48,3 +48,7 @@ environmentVariables:
 #      destination: eu.gcr.io/tammert/velero/velero
 #      mode: semver
 #      allow-prerelease: true
+
+#additionalLabels:
+#  bob: alice
+#  foo: bar
