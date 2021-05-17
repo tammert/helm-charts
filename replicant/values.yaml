@@ -13,6 +13,7 @@ serviceAccount:
 environmentVariables:
   REPLICANT_CONFIG: "/config/replicant.yaml"
   REPLICANT_DEBUG: "false"
+  REPLICANT_EXIT_ON_ERROR: "false"
 
 #secretEnvironmentVariables:
 #  AZURE_SP_ID: x
