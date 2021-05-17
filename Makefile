@@ -4,6 +4,7 @@ deploy_replicant:
 
 .PHONY: release_replicant
 release_replicant:
+	git pull
 	cr package replicant/
 	cr upload --config ~/.cr.yaml
 	cr index --config ~/.cr.yaml --push
