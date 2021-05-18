@@ -13,7 +13,8 @@ spec:
     spec:
       template:
         metadata:
-          {{- include "replicant.labels" . | nindent 10 }}
+          labels:
+            {{- include "replicant.labels" . | nindent 12 }}
         spec:
           serviceAccountName: {{ include "replicant.serviceAccountName" . }}
           restartPolicy: Never
