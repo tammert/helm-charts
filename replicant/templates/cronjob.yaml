@@ -7,8 +7,13 @@ metadata:
     {{- include "replicant.labels" . | nindent 4 }}
 spec:
   jobTemplate:
+    metadata:
+      labels:
+        {{- include "replicant.labels" . | nindent 8 }}
     spec:
       template:
+        metadata:
+          {{- include "replicant.labels" . | nindent 10 }}
         spec:
           serviceAccountName: {{ include "replicant.serviceAccountName" . }}
           restartPolicy: Never
