@@ -3,6 +3,16 @@ entries:
   replicant:
   - apiVersion: v2
     appVersion: v0.3.0
+    created: "2021-05-18T11:15:30.121080097+02:00"
+    description: Official Helm chart for Replicant
+    digest: cb346e593124b87f99bcf0cbec4c9a966a3ebe570feec46a5a1998e7dc120819
+    name: replicant
+    type: application
+    urls:
+    - https://github.com/tammert/helm-charts/releases/download/replicant-0.3.1/replicant-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
+    appVersion: v0.3.0
     created: "2021-05-17T22:23:20.119209858+02:00"
     description: Official Helm chart for Replicant
     digest: f945fb11734446400bc2b2f30750f19c1de4016c494654ee018dd1189cf4e31f
@@ -51,4 +61,4 @@ entries:
     urls:
     - https://github.com/tammert/helm-charts/releases/download/replicant-0.2.2/replicant-0.2.2.tgz
     version: 0.2.2
-generated: "2021-05-17T22:23:20.119266828+02:00"
+generated: "2021-05-18T11:15:30.121156253+02:00"
