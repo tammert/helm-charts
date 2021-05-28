@@ -1,4 +1,6 @@
 cronSchedule: "0 0 * * *"
+#backoffLimit: 6
+#restartPolicy: OnFailure
 
 image:
   registry: docker.io

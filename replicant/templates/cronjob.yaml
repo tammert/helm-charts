@@ -11,13 +11,14 @@ spec:
       labels:
         {{- include "replicant.labels" . | nindent 8 }}
     spec:
+      backoffLimit: {{ default 2 .Values.backoffLimit }}
       template:
         metadata:
           labels:
             {{- include "replicant.labels" . | nindent 12 }}
         spec:
           serviceAccountName: {{ include "replicant.serviceAccountName" . }}
-          restartPolicy: Never
+          restartPolicy: {{ default "Never" .Values.restartPolicy }}
           containers:
             - name: {{ include "replicant.name" . }}
               image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
