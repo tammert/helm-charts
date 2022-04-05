@@ -29,16 +29,15 @@ environmentVariables:
 #  {}
 
 #config:
+#  mode: higher
 #  images:
 #    nginx:
 #      source: k8s.gcr.io/ingress-nginx/controller
 #      destination: eu.gcr.io/tammert/ingress-nginx/controller
-#      mode: higher
 #    atlantis:
 #      source: docker.io/runatlantis/atlantis
 #      destination: eu.gcr.io/tammert/runatlantis/atlantis
 #      mode: all
-#      allow-prerelease: true
 #    external-dns:
 #      source: k8s.gcr.io/external-dns/external-dns
 #      destination: eu.gcr.io/tammert/external-dns/external-dns
@@ -52,7 +51,11 @@ environmentVariables:
 #      source: velero/velero
 #      destination: eu.gcr.io/tammert/velero/velero
 #      mode: semver
-#      allow-prerelease: true
+#    google-cloud-sdk:
+#      source: google/cloud-sdk
+#      destination: eu.gcr.io/tammert/google/cloud-sdk
+#      compatibility: alpine
+#      mode: highest
 
 #additionalLabels:
 #  bob: alice
