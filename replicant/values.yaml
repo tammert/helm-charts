@@ -56,6 +56,11 @@ environmentVariables:
 #      destination: eu.gcr.io/tammert/google/cloud-sdk
 #      compatibility: alpine
 #      mode: highest
+#    redis:
+#      source: redis
+#      destination: eu.gcr.io/tammert/redis
+#      mode: higher
+#      pinned-major: 6
 
 #additionalLabels:
 #  bob: alice
